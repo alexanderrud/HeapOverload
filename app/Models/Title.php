@@ -10,9 +10,9 @@ class Title extends Model
 {
     use HasFactory;
 
-    protected string $table = 'titles';
+    protected $table = 'titles';
 
-    protected array $fillable = [
+    protected $fillable = [
         'emp_no',
         'title',
         'from_date',

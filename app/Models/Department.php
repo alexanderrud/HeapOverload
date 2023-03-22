@@ -10,9 +10,9 @@ class Department extends Model
 {
     use HasFactory;
 
-    protected string $table = 'departments';
+    protected $primaryKey = 'dept_no';
 
-    protected array $fillable = [
+    protected $fillable = [
         'dept_no',
         'dept_name'
     ];
@@ -22,7 +22,7 @@ class Department extends Model
      */
     public function employees(): BelongsToMany
     {
-        return $this->belongsToMany(Employee::class)->using(DepartmentEmployee::class);
+        return $this->belongsToMany(Employee::class, 'dept_emp', 'emp_no', 'dept_no');
     }
 
     /**
@@ -30,6 +30,6 @@ class Department extends Model
      */
     public function managers(): BelongsToMany
     {
-        return $this->belongsToMany(Employee::class)->using(DepartmentManager::class);
+        return $this->belongsToMany(Employee::class, 'dept_manager', 'emp_no', 'dept_no');
     }
 }

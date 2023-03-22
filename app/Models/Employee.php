@@ -6,14 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Employee extends Model
 {
   use HasFactory;
 
-  protected string $table = 'employees';
+  protected $primaryKey = 'emp_no';
 
-  protected array $fillable = [
+  protected $table = 'employees';
+
+  protected $fillable = [
     'emp_no',
     'birth_date',
     'first_name',
@@ -24,11 +27,11 @@ class Employee extends Model
   ];
 
   /**
-   * @return HasOne
+   * @return HasMany
    */
-  public function salary(): HasOne
+  public function salaries(): HasMany
   {
-    return $this->hasOne(Salary::class);
+    return $this->hasMany(Salary::class, 'emp_no');
   }
 
   /**
@@ -36,7 +39,7 @@ class Employee extends Model
    */
   public function title(): HasOne
   {
-    return $this->hasOne(Title::class);
+    return $this->hasOne(Title::class, 'emp_no');
   }
 
   /**
@@ -44,6 +47,6 @@ class Employee extends Model
    */
   public function departments(): BelongsToMany
   {
-    return $this->belongsToMany(Department::class);
+    return $this->belongsToMany(Department::class, 'dept_emp', 'dept_no', 'emp_no');
   }
 }

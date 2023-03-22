@@ -10,12 +10,12 @@ class Salary extends Model
 {
     use HasFactory;
 
-    protected string $table = 'salaries';
+    protected $table = 'salaries';
 
-    protected array $fillable = [
+    protected $fillable = [
         'emp_no',
         'salary',
-        'from_date ',
+        'from_date',
         'to_date'
     ];
 
