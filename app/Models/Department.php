@@ -22,7 +22,7 @@ class Department extends Model
      */
     public function employees(): BelongsToMany
     {
-        return $this->belongsToMany(Employee::class, 'dept_emp', 'emp_no', 'dept_no');
+        return $this->belongsToMany(Employee::class, 'dept_emp', 'dept_no', 'emp_no');
     }
 
     /**
@@ -30,6 +30,6 @@ class Department extends Model
      */
     public function managers(): BelongsToMany
     {
-        return $this->belongsToMany(Employee::class, 'dept_manager', 'emp_no', 'dept_no');
+        return $this->belongsToMany(Employee::class, 'dept_manager', 'dept_no', 'emp_no');
     }
 }

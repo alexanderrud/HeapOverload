@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -40,13 +39,5 @@ class Employee extends Model
   public function title(): HasOne
   {
     return $this->hasOne(Title::class, 'emp_no');
-  }
-
-  /**
-   * @return BelongsToMany
-   */
-  public function departments(): BelongsToMany
-  {
-    return $this->belongsToMany(Department::class, 'dept_emp', 'dept_no', 'emp_no');
   }
 }
