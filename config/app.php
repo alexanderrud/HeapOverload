@@ -212,4 +212,5 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'employees_count' => env('EMPLOYEES_COUNT', 50)
 ];
