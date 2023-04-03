@@ -15,9 +15,9 @@ class EmployeeController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $employeesCount = config('app.employees_count');
-
-        $empoyees = Employee::take($employeesCount)->get();
+        $countPerPage = config('app.count_per_page');
+        
+        $empoyees = Employee::orderBy('emp_no')->paginate($countPerPage);
 
         return EmployeeResource::collection($empoyees);
     }

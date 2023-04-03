@@ -212,5 +212,5 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
-    'employees_count' => env('EMPLOYEES_COUNT', 50)
+    'count_per_page' => env('EMPLOYEES_COUNT', 50)
 ];
